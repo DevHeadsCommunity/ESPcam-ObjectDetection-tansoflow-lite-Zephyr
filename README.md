@@ -1,3 +1,11 @@
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [1. Training the Model](#1-training-the-model)
+  - [2. Setting up ESPcam with Arduino](#2-setting-up-espcam-with-arduino)
+  - [3. Integrating Zephyr RTOS](#3-integrating-zephyr-rtos)
 # Object detection project on ESPcam using the Zephyr RTOS, leveraging TensorFlow for model training and deployment
 
 This project implements object detection on an ESPcam to classify eggs using a TensorFlow Lite model. The data for training was sourced from [RoboFlow](https://roboflow.com/) and trained with TensorFlow. The ESPcam was set up with the Arduino IDE for deployment, and the Zephyr RTOS was configured for further enhancements.
@@ -84,4 +92,3 @@ Follow these steps to reproduce the project:
 
 ---
 
-## Folder Structure
