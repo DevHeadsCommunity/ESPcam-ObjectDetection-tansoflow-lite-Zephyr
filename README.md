@@ -1,14 +1,26 @@
-## Table of Contents
 
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [1. Training the Model](#1-training-the-model)
-- [2. Setting up ESPcam with Arduino](#2-setting-up-espcam-with-arduino)
-- [3. Integrating Zephyr RTOS](#3-integrating-zephyr-rtos)
 # Object detection project on ESPcam using the Zephyr RTOS, leveraging TensorFlow for model training and deployment
 
 This project implements object detection on an ESPcam to classify eggs using a TensorFlow Lite model. The data for training was sourced from [RoboFlow](https://roboflow.com/) and trained with TensorFlow. The ESPcam was set up with the Arduino IDE for deployment, and the Zephyr RTOS was configured for further enhancements.
+
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)  
+- [Features](#features)  
+- [Getting Started](#getting-started)  
+  - [1. Training the Model](#1-training-the-model)  
+    - [Data Preparation](#data-preparation)  
+    - [Training the Model](#training-the-model)  
+  - [2. Setting up ESPcam with Arduino](#2-setting-up-esp32cam-with-arduino)  
+    - [Install ESP32 Board Support](#install-esp32-board-support)  
+    - [Connect and Configure ESPcam](#connect-and-configure-esp32cam)  
+    - [Deploying the Model](#deploying-the-model)  
+  - [3. Integrating Zephyr RTOS](#3-integrating-zephyr-rtos)  
+    - [Setting up Zephyr](#setting-up-zephyr)  
+    - [Zephyr Enhancements](#zephyr-enhancements)  
+    - [Flashing the Code](#flashing-the-code)
 
 ---
 
@@ -32,12 +44,12 @@ This repository demonstrates:
 Follow these steps to reproduce the project:
 
 ## 1. Training the Model
-1. **Data Preparation**:
+###1. **Data Preparation**:
    - Collect egg image data using [RoboFlow](https://roboflow.com/).
    - Annotate the data for object detection (bounding boxes around eggs).
    - Export the dataset in a TensorFlow-supported format.
 
-2. **Training the Model**:
+###2. **Training the Model**:
    - Open this [Colab notebook template](https://colab.research.google.com/drive/1M9F4ohgpPpvrXIE0vtuU9cfbFOHzXeUc).
    - Upload your RoboFlow dataset.
    - Modify the notebook to load your data and adjust hyperparameters as needed.
@@ -47,7 +59,7 @@ Follow these steps to reproduce the project:
 ---
 
 ## 2. Setting up ESPcam with Arduino
-2. **Install ESP32 Board Support**:
+###2. **Install ESP32 Board Support**:
    - Open **Preferences** in Arduino IDE.
    - Add this URL in the "Additional Board Manager URLs" field:
      ```
@@ -55,12 +67,12 @@ Follow these steps to reproduce the project:
      ```
    - Go to **Tools > Board > Boards Manager**, search for **ESP32**, and install it.
 
-3. **Connect and Configure ESPcam**:
+###3. **Connect and Configure ESPcam**:
    - Connect the ESPcam to your PC using a USB-to-serial adapter.
    - Select **AI Thinker ESP32-CAM** under **Tools > Board**.
    - Set the appropriate **Port** under **Tools > Port**.
 
-4. **Deploying the Model**:
+###4. **Deploying the Model**:
    - Use the [TensorFlow Lite for Microcontrollers library](https://github.com/tensorflow/tflite-micro).
    - Write Arduino code to load and run the `.tflite` model.
    - Configure the ESPcam to perform inference on the live video stream.
@@ -68,7 +80,7 @@ Follow these steps to reproduce the project:
 ---
 
 ## 3. Integrating Zephyr RTOS
-1. **Setting up Zephyr**:
+###1. **Setting up Zephyr**:
    - Install Zephyr RTOS following the [official documentation](https://docs.zephyrproject.org/latest/getting_started/index.html).
    - Configure the ESP32 target board in Zephyr.
      ```bash
@@ -80,11 +92,11 @@ Follow these steps to reproduce the project:
      west build -b esp32 -p auto
      ```
 
-2. **Zephyr Enhancements**:
+###2. **Zephyr Enhancements**:
    - Use Zephyr for task scheduling to separate the camera feed, inference, and system diagnostics into individual threads.
    - Implement power management features to optimize ESPcam performance.
 
-3. **Flashing the Code**:
+###3. **Flashing the Code**:
    - Flash the Zephyr-based firmware to the ESPcam using:
      ```bash
      west flash
